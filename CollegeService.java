@@ -74,11 +74,17 @@ public class CollegeService {
   public boolean dropEnrollment(String enrollmentId) throws EnrollmentException{
 	  for(Enrollment e:enrollments) {
      	 if(e.getEnrollmentId()==enrollmentId) {
-     		  enrollments.remove(e);
-     	for(Course c:courses) {
-   	     if(c.getCourseId()==e.getCourseId()) 
-   	    	  c.setEnrolledCount(c.getEnrolledCount()-1);
-     }
+			  enrollments.remove(e);
+			   for(Student s:students) {
+                	     if(s.getStudentId()==e.getstudentId() {
+                	    	 for(Course c:courses) {
+                        	     if(c.getCourseId()==e.getcourseId()){
+								     c.setEnrolledCount(c.getEnrolledCount()-1);
+                        	    	  s.setCurrentCredits(s.getCurrentCredits()-c.getCredits());
+								 }
+                        	  }
+                     }
+                 }
      	return true;
       }
     }
@@ -94,7 +100,7 @@ public class CollegeService {
   public void printStudentEnrollments(String studentId) {
 	  for(Student s: students) {
 		  if(s.getStudentId()==studentId) {
-			  System.out.println("Student ID : "+studentId+"\n Student Name : "+s.getName()+"\nProgram : "+s.getProgram()+"\nCurrent Credits : "+s.getCurrentCredits());
+			  System.out.println("Student ID : "+studentId+"\nStudent Name : "+s.getName()+"\nProgram : "+s.getProgram()+"\nCurrent Credits : "+s.getCurrentCredits());
 		       break;
 		  }
 	  }
